@@ -16,7 +16,7 @@ import events from 'events';
             this.set('enableAutoLogin', val.toString());
         }
 
-        return this.get('enableAutoLogin') !== 'false';
+        return this.get('enableAutoLogin') === 'true';
     }
 
     export function enableSystemExternalPlayers(val) {
