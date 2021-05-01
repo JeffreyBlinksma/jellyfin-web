@@ -18,7 +18,7 @@ import libraryMenu from '../../scripts/libraryMenu';
 import globalize from '../../scripts/globalize';
 import browser from '../../scripts/browser';
 import { playbackManager } from '../../components/playback/playbackmanager';
-import '../../assets/css/scrollstyles.css';
+import '../../assets/css/scrollstyles.scss';
 import '../../elements/emby-itemscontainer/emby-itemscontainer';
 import '../../elements/emby-checkbox/emby-checkbox';
 import '../../elements/emby-button/emby-button';
@@ -745,9 +745,7 @@ function renderLogo(page, item, apiClient) {
 
     const url = logoImageUrl(item, apiClient, {});
 
-    if (!layoutManager.mobile && !userSettings.enableBackdrops()) {
-        detailLogo.classList.add('hide');
-    } else if (url) {
+    if (url) {
         detailLogo.classList.remove('hide');
         imageLoader.setLazyImage(detailLogo, url);
     } else {
@@ -1797,7 +1795,7 @@ function renderMusicVideos(page, item, user) {
     }).then(function (result) {
         if (result.Items.length) {
             page.querySelector('#musicVideosCollapsible').classList.remove('hide');
-            const musicVideosContent = page.querySelector('.musicVideosContent');
+            const musicVideosContent = page.querySelector('#musicVideosContent');
             musicVideosContent.innerHTML = getVideosHtml(result.Items);
             imageLoader.lazyChildren(musicVideosContent);
         } else {
